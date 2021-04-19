@@ -1,10 +1,13 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
+import Navbar from './Navbar';
+
 
 class App extends React.Component{
     render() {
         return(
-            <div>App</div>
+            <div>
+                <Navbar />
+            </div>
         )
             
         
