@@ -14,21 +14,24 @@ componentDidMount(){
             this.props.products.map(product => {
                 return(
                     <div>
-                        <div className="cointainer">
-                            <div className="row">
-                                <div className="col-md-6">
-                                <div className="card">
-                                    <img src={product.image} alt="Denim Jeans"  />
-                                    <h1>Tailored Jeans</h1>
-                                    <p className="price">$19.99</p>
-                                    <p>Some text about the jeans..</p>
-                                    <p><button>Add to Cart</button></p>
+                            
+                                <div class="column">
+                                    
+                                    <div className="card">
+                                        <img src={product.image} alt="Denim Jeans"  />
+                                        <h1>{product.title}</h1>
+                                        <p className="price">{product.price}</p>
+                                        <p>Some text about the jeans..</p>
+                                        <button class="kuchh">Add to Cart</button>
 
-                                </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            
+                        
+                            
+                       
+                    
                 )
             })
         )
