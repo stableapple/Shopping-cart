@@ -9,9 +9,9 @@ componentDidMount(){
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     console.log(this.props.fetchProducts())
 }
-handleClick = (id)=> {
-    this.props.addToCart(id)
-}
+//handleClick = (id)=> {
+    ///this.props.fetchCart(id)
+//}
     render(){
         return(
             this.props.products.map(product => {
@@ -25,7 +25,7 @@ handleClick = (id)=> {
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
                                         <p>Some text about the jeans..</p>
-                                        <button onClick={this.handleClick(product.id)} class="kuchh">Add to Cart</button>
+                                        <button  class="kuchh">Add to Cart</button>
 
                                     </div>
                                 </div>
