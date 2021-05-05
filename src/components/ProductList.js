@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { fetchProducts } from '../actions/index';
+import { fetchProducts, addToCart } from '../actions/index';
 import './ProductList.css'
 
 class ProductList extends React.Component{
@@ -9,9 +9,9 @@ componentDidMount(){
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     console.log(this.props.fetchProducts())
 }
-//handleClick = (id)=> {
-    ///this.props.fetchCart(id)
-//}
+handleClick = (id)=> {
+    this.props.addToCart(id)
+}
     render(){
         return(
             this.props.products.map(product => {
@@ -25,7 +25,7 @@ componentDidMount(){
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
                                         <p>Some text about the jeans..</p>
-                                        <button  class="kuchh">Add to Cart</button>
+                                        <button  class="kuchh" onClick={e => this.handleClick(product.id)}>Add to Cart</button>
 
                                     </div>
                                 </div>
@@ -43,4 +43,4 @@ componentDidMount(){
 const mapStatetoProps=(state)=> {
     return { products: state.products}
 }
-export default connect(mapStatetoProps,{fetchProducts})(ProductList);
+export default connect(mapStatetoProps,{fetchProducts, addToCart})(ProductList);

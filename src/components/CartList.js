@@ -18,7 +18,17 @@ componentDidMount(){
                     if(product.id == cart.productId){
                            return (
                            <div>
-                               {product.title}
+                                <div class="column">
+                                    
+                                    <div className="card">
+                                        <img src={product.image} alt="Denim Jeans"  />
+                                        <h1>{product.title}</h1>
+                                        <p className="price">{product.price}</p>
+                                        <p>Some text about the jeans..</p>
+                                        <button  class="kuchh">Buy</button>
+
+                                    </div>
+                                </div>
                            </div>
                            )
                         
