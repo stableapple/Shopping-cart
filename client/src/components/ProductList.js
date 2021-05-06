@@ -7,9 +7,11 @@ class ProductList extends React.Component{
 
 componentDidMount(){
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
-    console.log(this.props.fetchProducts())
+    
 }
+
 handleClick = (id)=> {
+    console.log(id)
     this.props.addToCart(id)
 }
     render(){
@@ -24,7 +26,7 @@ handleClick = (id)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <p>Some text about the jeans..</p>
+                                        <p>{product.id}</p>
                                         <button  class="kuchh" onClick={e => this.handleClick(product.id)}>Add to Cart</button>
 
                                     </div>
