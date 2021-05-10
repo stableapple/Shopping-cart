@@ -7,3 +7,15 @@ export const fetchProducts = () => async dispatch => {
     
 }
 
+export const fetchCart = () => async dispatch => {
+    const response = await json.get('/cart')
+    dispatch({type: 'FETCH_CART', payload: response.data})
+}
+
+export const addToCart = (id) => async dispatch => {
+    console.log(id)
+    const response = await json.post('/cart', {id})
+    console.log(response.data)
+    dispatch({type:'ADD_CART', payload: response.data})
+}
+

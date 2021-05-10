@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { fetchProducts,fetchCart } from '../actions/index';
+import { fetchProducts, fetchCart} from '../actions/index';
 
 class CartList extends React.Component{
 
@@ -14,8 +14,8 @@ componentDidMount(){
         return(
             this.props.products.map(product => {
                 return(
-                this.props.carts.products.map(cart => {
-                    if(product.id == cart.productId){
+                this.props.carts.map(cart => {
+                    if(product.id == cart.id){
                            return (
                            <div>
                                 <div class="column">

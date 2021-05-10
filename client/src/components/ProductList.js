@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { fetchProducts, addToCart } from '../actions/index';
+import { fetchProducts,addToCart} from '../actions/index';
 import './ProductList.css'
 
 class ProductList extends React.Component{
@@ -27,7 +27,7 @@ handleClick = (id)=> {
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
                                         <p>{product.id}</p>
-                                        <button  class="kuchh" onClick={e => this.handleClick(product.id)}>Add to Cart</button>
+                                        <button  class="kuchh" onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>
                                 </div>
@@ -45,4 +45,4 @@ handleClick = (id)=> {
 const mapStatetoProps=(state)=> {
     return { products: state.products}
 }
-export default connect(mapStatetoProps,{fetchProducts, addToCart})(ProductList);
+export default connect(mapStatetoProps,{fetchProducts,addToCart})(ProductList);
