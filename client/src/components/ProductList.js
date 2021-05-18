@@ -26,7 +26,6 @@ handleClick = (id)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <p>{product.id}</p>
                                         <button  class="kuchh" onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>

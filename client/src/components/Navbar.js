@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router-dom';
 
 class Navbar extends React.Component{
     render() {
@@ -24,7 +24,9 @@ class Navbar extends React.Component{
         <a className="nav-link" href="#">Pricing</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">About</a>
+        <Link to="/cart">
+        <a className="nav-link" href="#">Cart</a>
+        </Link>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
