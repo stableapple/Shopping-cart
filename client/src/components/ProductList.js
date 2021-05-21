@@ -27,7 +27,7 @@ handleClick = (id)=> {
         return(
             this.props.carts.map(cart => {
                 return(
-                    this.props.products.map(product => {
+                    this.props.products.map(product  => {
                     return(
                     <div>
                             
