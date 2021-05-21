@@ -1,11 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {connect} from 'react-redux'
-import { fetchProducts,addToCart} from '../actions/index';
+import { fetchProducts,fetchCart, addToCart} from '../actions/index';
 import './ProductList.css'
 
 class ProductList extends React.Component{
 
+constructor(props) {
+    super(props);
+    this.state = {
+        disable: false
+    }
+}
+
 componentDidMount(){
+    this.props.fetchCart().then((whatever)=>{console.log('resolved')});
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     
 }
@@ -13,11 +21,14 @@ componentDidMount(){
 handleClick = (id)=> {
     console.log(id)
     this.props.addToCart(id)
+    
 }
     render(){
         return(
-            this.props.products.map(product => {
+            this.props.carts.map(cart => {
                 return(
+                    this.props.products.map(product => {
+                    return(
                     <div>
                             
                                 <div class="column">
@@ -26,15 +37,15 @@ handleClick = (id)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  class="kuchh" onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
+                                        <button  class={product.id==cart.id ? "disabled-button": "kuchh"} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>
                                 </div>
                             </div>
                             
                         
-                            
-                       
+                    )    
+                        })    
                     
                 )
             })
@@ -42,6 +53,9 @@ handleClick = (id)=> {
     }
 }
 const mapStatetoProps=(state)=> {
-    return { products: state.products}
+    return {
+         products: state.products,
+         carts: state.carts
+        }
 }
-export default connect(mapStatetoProps,{fetchProducts,addToCart})(ProductList);
+export default connect(mapStatetoProps,{fetchProducts,fetchCart,addToCart})(ProductList);
