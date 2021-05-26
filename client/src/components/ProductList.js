@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import Modal from 'react-modal'
 import { fetchProducts,fetchCart, addToCart} from '../actions/index';
 import './ProductList.css'
 
@@ -8,7 +9,8 @@ class ProductList extends React.Component{
 constructor(props) {
     super(props);
     this.state = {
-        disable: false
+        disable: false,
+        product:null
     }
 }
 
@@ -17,38 +19,44 @@ componentDidMount(){
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     
 }
+openModal = (product) => {
+    this.setState({ product})
+}
 
 handleClick = (id)=> {
     console.log(id)
     this.props.addToCart(id)
     
+    
 }
     render(){
         return(
-            this.props.carts.map(cart => {
-                return(
                     this.props.products.map(product  => {
-                    return(
-                    <div>
+                        
+                            return(
+                        
+                            <div>
                             
                                 <div class="column">
                                     
                                     <div className="card">
+
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  class={product.id==cart.id ? "disabled-button": "kuchh"} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
+                                        <button  class="kuchh" onClick={()=> this.openModal(product)} >Add to Cart</button>
 
                                     </div>
                                 </div>
                             </div>
                             
                         
-                        )    
-                        })    
+                        )}
+                        
+                          
                     
                 )
-            })
+            
         )
     }
 }
