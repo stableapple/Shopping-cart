@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux';
-import Modal from 'react-modal'
 import { fetchProducts,fetchCart, addToCart} from '../actions/index';
 import './ProductList.css'
 
@@ -9,7 +8,7 @@ class ProductList extends React.Component{
 constructor(props) {
     super(props);
     this.state = {
-        disable: false,
+        disabled: [],
         product:null
     }
 }
@@ -19,14 +18,12 @@ componentDidMount(){
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     
 }
-openModal = (product) => {
-    this.setState({ product})
-}
 
 handleClick = (id)=> {
     console.log(id)
     this.props.addToCart(id)
-    
+    this.setState({disabled:[...this.state.disabled, id]})
+    console.log(this.state.disabled)
     
 }
     render(){
@@ -44,7 +41,7 @@ handleClick = (id)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  class="kuchh" onClick={()=> this.openModal(product)} >Add to Cart</button>
+                                        <button  key={product.id} class= {this.state.disabled.indexOf(product.id)!==-1?"disabled":"kuchh"} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>
                                 </div>
