@@ -5,28 +5,24 @@ import './ProductList.css'
 
 class ProductList extends React.Component{
 
-constructor(props) {
-    super(props);
-    this.state = {
-        disabled: [],
-        product:null
-    }
-}
-
 componentDidMount(){
     this.props.fetchCart().then((whatever)=>{console.log('resolved')});
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
+    console.log(this.props.carts)
     
 }
 
 handleClick = (id)=> {
     console.log(id)
     this.props.addToCart(id)
-    this.setState({disabled:[...this.state.disabled, id]})
-    console.log(this.state.disabled)
+    this.isItemExist(id)
     
 }
+isItemExist=(id)=> {
+    return this.props.carts.findIndex(item => item.id ===id) === -1
+}
     render(){
+        console.log(this.props.carts)
         return(
                     this.props.products.map(product  => {
                         
@@ -41,7 +37,7 @@ handleClick = (id)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  key={product.id} class= {this.state.disabled.indexOf(product.id)!==-1?"disabled":"kuchh"} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
+                                        <button  key={product.id} onClick={()=> this.handleClick(product.id)} disabled={!this.isItemExist(product.id)}    >Add to Cart</button>
 
                                     </div>
                                 </div>
@@ -62,5 +58,6 @@ const mapStatetoProps=(state)=> {
          products: state.products,
          carts: state.carts
         }
+        
 }
 export default connect(mapStatetoProps,{fetchProducts,fetchCart,addToCart})(ProductList);
