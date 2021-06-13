@@ -11,14 +11,17 @@ componentDidMount(){
     console.log(this.props.carts)
     
 }
+componentDidUpdate(){
+    this.props.fetchCart().then((whatever)=>{console.log('resolved')});
+}
 
 handleClick = (id)=> {
-    console.log(id)
     this.props.addToCart(id)
     this.isItemExist(id)
     
 }
-isItemExist=(id)=> {
+isItemExist=(id,error)=> {
+    console.log(id)
     return this.props.carts.findIndex(item => item.id ===id) === -1
 }
     render(){
