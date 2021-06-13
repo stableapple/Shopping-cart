@@ -11,21 +11,24 @@ componentDidMount(){
     console.log(this.props.carts)
     
 }
-componentDidUpdate(){
-    this.props.fetchCart().then((whatever)=>{console.log('resolved')});
-}
+
 
 handleClick = (id)=> {
     this.props.addToCart(id)
+    console.log(this.props.carts)
     this.isItemExist(id)
     
 }
-isItemExist=(id,error)=> {
-    console.log(id)
-    return this.props.carts.findIndex(item => item.id ===id) === -1
+isItemExist=(id)=> {
+    const add=this.props.carts.findIndex(item => item.id ===id)
+    if(add!== -1){
+        return true
+    }
+    else{
+        return false
+    }
 }
     render(){
-        console.log(this.props.carts)
         return(
                     this.props.products.map(product  => {
                         
@@ -40,7 +43,7 @@ isItemExist=(id,error)=> {
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  key={product.id} onClick={()=> this.handleClick(product.id)} disabled={!this.isItemExist(product.id)}    >Add to Cart</button>
+                                        <button  key={product.id} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>
                                 </div>
