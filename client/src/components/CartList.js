@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { fetchProducts, fetchCart} from '../actions/index';
+import Fade from 'react-reveal/Fade';
 
 class CartList extends React.Component{
 
@@ -12,24 +13,20 @@ componentDidMount(){
 
     render(){
         return(
-            this.props.products.map(product => {
+            <div className="cart">
+            <Fade left cascade>
+                <ul className="cart-items">
+            {this.props.products.map(product => {
                 return(
                 this.props.carts.map(cart => {
                     if(product.id == cart.id){
                            return (
-                           <div>
-                                <div class="column">
-                                    
-                                    <div className="card">
-                                        <img src={product.image} alt="Denim Jeans"  />
-                                        <h1>{product.title}</h1>
+                           <li key={product.id}>
+                                        <div>{product.title}</div>
                                         <p className="price">{product.price}</p>
                                         <p>Some text about the jeans..</p>
                                         <button  class="kuchh">Buy</button>
-
-                                    </div>
-                                </div>
-                           </div>
+                           </li>
                            )
                         
                     }
@@ -37,6 +34,10 @@ componentDidMount(){
                 )
                 
             })
+        }
+        </ul>
+        </Fade>
+            </div>
             )
         
 }

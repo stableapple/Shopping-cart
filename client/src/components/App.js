@@ -4,19 +4,25 @@ import Navbar from './Navbar';
 import ProductList from './ProductList';
 import CartList from './CartList';
 import history from '../history'
+import './App.css'
 
 class App extends React.Component{
     render() {
         return(
-            <div className="ui cointainer">
                 <Router history={history}>
                     <Navbar />
                     <Switch>
-                    <Route path="/" exact component={ProductList}></Route>
+                   
                     <Route path="/cart" exact component={CartList}></Route>
                     </Switch>
+                    <div className="main">
+                        <ProductList />
+                    </div>
+                    <div className="sidebar">
+                        <CartList />
+                    </div>
                 </Router>
-            </div>
+          
         )
             
         
