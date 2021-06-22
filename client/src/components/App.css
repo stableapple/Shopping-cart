@@ -10,7 +10,16 @@
   }
 .main{
     grid-area: main;
+    width: 50%;
+    
 }
 .sidebar{
-    flex: 1 20rem;
+    display: flex;
+    width:50%;
+    margin-left: 10%;
+    padding: 0 90px;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
 }

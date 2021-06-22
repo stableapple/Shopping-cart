@@ -9,7 +9,7 @@ body {
 /* Float four columns side by side */
 .column {
   float: left;
-  width: 20%;
+
   padding: 0 10px;
 }
 
@@ -70,7 +70,7 @@ img {
 }
 .cart {
   padding: 1rem;
-  margin: 1rem;
+  margin-left: 20%;
   display: flex;
 }
 .cart-items {

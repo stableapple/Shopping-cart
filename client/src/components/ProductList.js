@@ -16,7 +16,7 @@ componentDidMount(){
 handleClick = (id)=> {
     this.props.addToCart(id)
     console.log(this.props.carts)
-    this.isItemExist(id)
+    window.location.reload()
     
 }
 isItemExist=(id)=> {
@@ -35,15 +35,15 @@ isItemExist=(id)=> {
                             return(
                         
                             <div>
-                            
-                                <div class="column">
+                                
+                                    <div class="column">
                                     
                                     <div className="card">
 
                                         <img src={product.image} alt="Denim Jeans"  />
                                         <h1>{product.title}</h1>
                                         <p className="price">{product.price}</p>
-                                        <button  key={product.id} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
+                                        <button  className="kuchh"key={product.id} onClick={()=> this.handleClick(product.id)} >Add to Cart</button>
 
                                     </div>
                                 </div>

@@ -4,12 +4,14 @@ import { fetchProducts, fetchCart} from '../actions/index';
 import Fade from 'react-reveal/Fade';
 
 class CartList extends React.Component{
+    
 
 componentDidMount(){
     this.props.fetchCart().then((whatever)=>{console.log('resolved')});
     this.props.fetchProducts().then((whatever)=>{console.log('resolved')});
     
 }
+
 
     render(){
         return(
@@ -19,6 +21,7 @@ componentDidMount(){
             {this.props.products.map(product => {
                 return(
                 this.props.carts.map(cart => {
+                    
                     if(product.id == cart.id){
                            return (
                            <li key={product.id}>

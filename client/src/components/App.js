@@ -13,7 +13,7 @@ class App extends React.Component{
                     <Navbar />
                     <Switch>
                    
-                    <Route path="/cart" exact component={CartList}></Route>
+                    
                     </Switch>
                     <div className="main">
                         <ProductList />
@@ -21,6 +21,7 @@ class App extends React.Component{
                     <div className="sidebar">
                         <CartList />
                     </div>
+                    
                 </Router>
           
         )
